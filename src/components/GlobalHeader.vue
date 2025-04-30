@@ -27,6 +27,10 @@
               </ASpace>
               <template #overlay>
                 <a-menu>
+                  <a-menu-item @click="pushUserPage">
+                    <UserOutlined />
+                    个人主页
+                  </a-menu-item>
                   <a-menu-item @click="doLogout">
                     <LogoutOutlined />
                     退出登录
@@ -46,11 +50,15 @@
 
 <script lang="ts" setup>
 import { computed, h, ref } from 'vue'
-import { HomeOutlined, LogoutOutlined } from '@ant-design/icons-vue'
+import { HomeOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons-vue'
 import { MenuProps, message } from 'ant-design-vue'
 import { useRouter } from 'vue-router'
 import { useLoginUserStore } from '@/stores/useLoginUserStore'
 import { userLogoutUsingPost } from '@/api/userController'
+
+const pushUserPage = () => {
+  router.push('/lei/profile')
+}
 
 // 菜单列表
 const originItems = [
